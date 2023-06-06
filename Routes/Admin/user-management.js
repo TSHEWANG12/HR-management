@@ -13,7 +13,7 @@ const {
 const { loginrequired } = require("../../Middlewares/jwt");
 const router = express.Router();
 
-//============================== Department User Management ========================//
+//============================== Employee User Management ========================//
 router.get("/adddeptuser", loginrequired, getAddDeptUser);
 router.post("/adddeptuser", loginrequired, postAddDeptUser);
 router.get("/view-dept-user", loginrequired, getDeptUser);
