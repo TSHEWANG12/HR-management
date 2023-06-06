@@ -149,7 +149,7 @@ exports.logout = async(req, res) => {
 
 //Sort
 
-exports.getSort = async (req, res) => {
+exports.getFilter = async (req, res) => {
   const successMessage = req.flash('success');
   const errorMessage = req.flash('error');
   const token = req.cookies.access_token;

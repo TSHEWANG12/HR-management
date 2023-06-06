@@ -8,6 +8,7 @@ const {
   getUpdateDeptUser,
   logout,
   getSort,
+  getFilter,
 } = require("../../Controllers/Admin/user-management");
 const { loginrequired } = require("../../Middlewares/jwt");
 const router = express.Router();
@@ -19,7 +20,7 @@ router.get("/view-dept-user", loginrequired, getDeptUser);
 router.get("/update-dept-user/:id", loginrequired, getUpdateDeptUser);
 router.post("/update-dept-user/:id", loginrequired, postDeptUser);
 router.post("/view-dept-user/:id", loginrequired, postDeleteDeptUser);
-router.post("/filter-by-gender", loginrequired, getSort);
+router.post("/filter-by-gender", loginrequired, getFilter);
 router.get("/logOut", loginrequired, logout);
 
 module.exports = router;
