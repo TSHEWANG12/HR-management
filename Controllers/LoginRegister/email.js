@@ -18,7 +18,7 @@ const sendVerificationEmail = async (user, token) => {
     <a href="${verificationLink}">${verificationLink}</a>
   `;
   const mailOptions = {
-    from: "Pema Hotel Invetory System <noreply@yourapp.com>",
+    from: "HR management System <noreply@yourapp.com>",
     to: user.email,
     subject: "Verify Your Email",
     html: emailBody,
@@ -39,7 +39,7 @@ const sendPasswordResetEmail = async (user, token) => {
     <a href="${resetLink}">${resetLink}</a>
   `;
   const mailOptions = {
-    from: "Pema Inventory <noreply@yourapp.com>",
+    from: "HR management <noreply@yourapp.com>",
     to: user.email,
     subject: "Reset Your Password",
     html: emailBody,
@@ -57,16 +57,16 @@ const sendDefaultCredentials = async (user, defaultpassword, token) => {
   console.log(user);
   const emailBody = `
     <p>Hello ${user.name},</p>
-    <p>You are register in  ${user.department}. Given string is your password to login into Pema Inventory System</p>
+    <p>You are register in  ${user.department}. Given string is your password to HR management System</p>
     <h3>${defaultpassword}</h3>
     <p>Warning! Please change this password as soon as you login the system!!!</p>
     <p>Please click the following link to verify your email address and happy stay </p>
     <a href="${verificationLink}">${verificationLink}</a>
   `;
   const mailOptions = {
-    from: "Pema Hotel Invetory System <noreply@yourapp.com>",
+    from: "HR Management system System <noreply@yourapp.com>",
     to: user.email,
-    subject: "Your credentials for Pema Inventory",
+    subject: "Your credentials for HR management system",
     html: emailBody,
   };
   try {
@@ -83,11 +83,11 @@ const deptEmailChangedSendMessage = async (NotupdatedUser, UpdatedUser) => {
     <p>Your initial department was ${NotupdatedUser.department} but you are assigned to ${UpdatedUser.department} department from today</p>
 
     <p>Your user email for Pema Hotel Inventory is changed to ${UpdatedUser.email} from ${NotupdatedUser.email}</p>
-    <p>Note: You can use same password to login to Pema Inventory System!!!</p>
+    <p>Note: You can use same password to login to HR management System!!!</p>
 
   `;
   const mailOptions = {
-    from: "Pema Hotel Invetory System <noreply@yourapp.com>",
+    from: "HR managementSystem <noreply@yourapp.com>",
     to: UpdatedUser.email,
     subject: "Update on your details",
     html: emailBody,
@@ -104,8 +104,8 @@ const nameChangedSendMessage = async (NotupdatedUser, UpdatedUser) => {
     <p>Hello ${UpdatedUser.name},</p>
     <h3>Update on your details</h3>
 
-    <p>Your user name for Pema Hotel Inventory system is changed to${UpdatedUser.name} from ${NotupdatedUser.name} </p>
-    <p>Note: You can use same password to login to Pema Inventory System!!!</p>
+    <p>Your user name for HR management is changed to${UpdatedUser.name} from ${NotupdatedUser.name} </p>
+    <p>Note: You can use same password to login to HR  System!!!</p>
 
   `;
   const mailOptions = {
@@ -155,7 +155,7 @@ const nameEmailChangedSendMessage = async (NotupdatedUser, UpdatedUser) => {
 
   `;
   const mailOptions = {
-    from: "Pema Hotel Invetory System <noreply@yourapp.com>",
+    from: "HR Management system <noreply@yourapp.com>",
     to: UpdatedUser.email,
     subject: "Update on your details",
     html: emailBody,
@@ -173,12 +173,12 @@ const deptChangedSendMessage = async (NotupdatedUser, UpdatedUser) => {
     <p>Hello ${UpdatedUser.name},</p>
     <h3>Update on your details</h3>
 
-    <p>You are assigned to ${UpdatedUser.department} department from ${NotupdatedUser.department}  for Pema Hotel Inventory System   </p>
-    <p>Note: You can use same password to login to Pema Inventory System!!!</p>
+    <p>You are assigned to ${UpdatedUser.department} department from ${NotupdatedUser.department}  for HR management System   </p>
+    <p>Note: You can use same password to login to HR management System!!!</p>
 
   `;
   const mailOptions = {
-    from: "Pema Hotel Invetory System <noreply@yourapp.com>",
+    from: "HR management System <noreply@yourapp.com>",
     to: UpdatedUser.email,
     subject: "Update on your details",
     html: emailBody,
@@ -195,14 +195,14 @@ const deptNameChangedSendMessage = async (NotupdatedUser, UpdatedUser) => {
     <p>Hello ${UpdatedUser.name},</p>
     <h3>Update on your details</h3>
 
-    <p>You are assigned to ${UpdatedUser.department} department from ${NotupdatedUser.department}  for Pema Hotel Inventory System   </p>
-    <p> And  user name for Pema Hotel Inventory System is changed to${UpdatedUser.name} from ${NotupdatedUser.name} </p>
-    <p>Note: You can use same password to login to Pema Inventory System!!!</p>
+    <p>You are assigned to ${UpdatedUser.department} department from ${NotupdatedUser.department}  for HR management System   </p>
+    <p> And  user name for HR management System is changed to${UpdatedUser.name} from ${NotupdatedUser.name} </p>
+    <p>Note: You can use same password to login to HR management System!!!</p>
 
 
   `;
   const mailOptions = {
-    from: "Pema Hotel Invetory System <noreply@yourapp.com>",
+    from: " HR management <noreply@yourapp.com>",
     to: UpdatedUser.email,
     subject: "Update on your details",
     html: emailBody,
@@ -221,16 +221,16 @@ const allChangedSendMessage = async (NotupdatedUser, UpdatedUser) => {
     <h3>Update on your details</h3>
 
     <p>You are assigned to ${UpdatedUser.department} department from ${NotupdatedUser.department}  for Pema Hotel Inventory System   </p>
-    <p> And  user name for Pema Hotel Inventory System is changed to${UpdatedUser.name} from ${NotupdatedUser.name} </p>
-    <p>Your user email for Pema Hotel Inventory System is changed to${UpdatedUser.email} from ${NotupdatedUser.email} </p>
+    <p> And  user name for HR System is changed to${UpdatedUser.name} from ${NotupdatedUser.name} </p>
+    <p>Your user email for HR is changed to${UpdatedUser.email} from ${NotupdatedUser.email} </p>
 
-    <p>Note: You can use same password to login to Pema Inventory System!!!</p>
+    <p>Note: You can use same password to login to System!!!</p>
 
 
 
   `;
   const mailOptions = {
-    from: "Pema Hotel Invetory System <noreply@yourapp.com>",
+    from: "HR management system <noreply@yourapp.com>",
     to: UpdatedUser.email,
     subject: "Update on your details",
     html: emailBody,
