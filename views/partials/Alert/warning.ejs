@@ -1,0 +1,105 @@
+<style>
+  /* CSS styles for the delete warning pop-up */
+  .delete-warning {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    display: none;
+    padding: 20px;
+    max-width: 400px;
+    text-align: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+  }
+
+  .delete-warning h3 {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+
+  .delete-warning p {
+    margin-bottom: 20px;
+  }
+
+  .delete-warning .buttons {
+    display: flex;
+    justify-content: center;
+  }
+
+  .delete-warning .cancel-button {
+    background-color:#B26A28;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 4px;
+    margin-right: 10px;
+  }
+
+  .delete-warning .delete-button {
+    background-color: #ea5455;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 4px;
+  }
+</style>
+
+<!-- Delete warning pop-up -->
+<div id="deleteWarning" class="delete-warning">
+  <h3>Warning</h3>
+  <p>Are you sure you want to delete this item?</p>
+  <div class="buttons">
+    <button
+      id="cancelButton"
+      class="cancel-button"
+      onclick="hideDeleteWarning()"
+    >
+      No
+    </button>
+    <button id="deleteButton" class="delete-button" onclick="performDelete()">
+      Yes
+    </button>
+  </div>
+</div>
+
+<form id="deleteForm" method="post">
+  <!-- Your form contents here -->
+</form>
+
+<script>
+  // JavaScript code
+  let deleteId; // Variable to store the ID of the item to be deleted
+
+  function showDeleteWarning(id) {
+    deleteId = id; // Store the ID in the variable
+    const deleteWarning = document.getElementById("deleteWarning");
+    deleteWarning.style.display = "block";
+  }
+
+  function hideDeleteWarning() {
+    const deleteWarning = document.getElementById("deleteWarning");
+    deleteWarning.style.display = "none";
+  }
+
+  function getBaseURL() {
+    const currentURL = window.location.href;
+    return currentURL;
+  }
+
+  function performDelete() {
+    if (deleteId) {
+      const deleteForm = document.getElementById("deleteForm");
+      const baseURL = getBaseURL();
+      console.log(baseURL+ "/" + deleteId);
+      deleteForm.action = baseURL+"/"+ deleteId; // Set the correct action URL
+      deleteForm.submit();
+    }
+  }
+</script>

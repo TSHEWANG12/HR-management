@@ -1,0 +1,85 @@
+/* Google Fonts Import Link */
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap");
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+}
+:root {
+    --sidebar:#545759;
+    --hover:#B26A28;
+    --text:#fff;
+    --black:#212b36;
+    --d1:#C89504;
+    --d2:#EEC638;
+    --d3:#F2AA20;
+}
+.req{
+    background:#fafbfe;
+    margin-top:30px;
+    /* border-radius: 6px; */
+    padding: 20px;
+    /* border: 1px solid #e8ebed; */
+}
+.req .req-dashimg{
+    width:50px;
+    height:48px;
+    background:var(--d2);
+    border-radius: 50px;
+}
+.req .req-dashimg i{
+   margin-left: 18px;
+   margin-top:18px;
+}
+
+.req .req-content h4 {
+    color: #212b36;
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 0;
+}
+.req .req-content h6 {
+    font-weight: 400;
+    font-size: 14px;
+    color: #212b36;
+}
+  .chart-container {
+    width: 200px;
+  }
+
+
+  .request {
+    display: flex;
+    align-items: center;
+    gap:10px;
+    margin: 0 auto;
+    width: fit-content;
+    border-radius:10px;
+    padding: 8px 32px;
+    color: var(--black);
+    transition: all 400ms ease;
+    margin-bottom:20px;
+  }
+  
+  .request:hover {
+    transform: scale(1.02);
+    box-shadow: 0 4px 16px -7px rgba(0, 0, 0, 0.3);
+  }
+  
+  .request .details ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .request .details ul li {
+    font-size:12px;
+    margin: 10px 0;
+    text-transform: uppercase;
+  }
+  
+  .request .details .percentage {
+    font-weight: 700;
+    color:var(--hover);
+  }
+  

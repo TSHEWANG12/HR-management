@@ -1,0 +1,54 @@
+.searchable-dropdown {
+  position: relative;
+  margin-left:10px;
+}
+
+#search-input {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  padding: 12px 20px;
+  width: 100%;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  z-index: 1;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  max-height: 200px;
+  overflow-y: auto;
+  border-radius: 4px;
+  background-color: #fff;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.2), 0 4px 4px 0 rgba(0, 0, 0, 0.1);
+}
+
+.dropdown-item {
+  color: #333;
+  cursor: pointer;
+  display: block;
+  font-size: 16px;
+  padding: 12px 20px;
+  text-decoration: none;
+  transition: background-color 0.3s;
+  z-index: 1;
+}
+
+.dropdown-item:hover {
+  background-color: #f1f1f1;
+}
+
+.dropdown-item.selected {
+  background-color: #4caf50;
+  color: #fff;
+}
+
+/**Other department request***/
+.req-button {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  margin: 5px;
+}

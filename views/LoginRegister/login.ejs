@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+<title>Login</title>
+
+<link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.png">
+
+<link rel="stylesheet" href="assets/css/bootstrap.min.css">
+
+<link rel="stylesheet" href="assets/plugins/fontawesome/css/fontawesome.min.css">
+<link rel="stylesheet" href="assets/plugins/fontawesome/css/all.min.css">
+
+<link rel="stylesheet" href="assets/css/style.css">
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+</head>
+<body class="account-page">
+
+  <% if (typeof successMessage !== "undefined" && successMessage.length > 0) { %>
+    <script>
+      swal({
+        title: "Good job!",
+        text: "<%= successMessage[0] %>",
+        icon: "success",
+      });
+    </script>
+  <% } %>
+
+  <% if (typeof errorMessage !=="undefined" && errorMessage.length > 0 ) { %>
+    <script>
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: "<%= errorMessage %>",
+      })
+      </script>
+  <% } %>
+
+<div class="main-wrapper">
+    <div class="account-content">
+      <form class="loginform" action="/" method="post">
+        <div class="login-wrapper">
+            <div class="login-content">
+                <div class="login-userset">
+                    <div class="login-logo">
+                        <img src="assets/img/hr.png" alt="img">
+                    </div>
+                    <div class="login-userheading">
+                        <h3>Sign In</h3>
+                        <h4>Please login to your account</h4>
+                    </div>
+
+                    <div class="form-login">
+                        <label for="exampleFormControlInput1" >Email</label>
+                        <div class="form-addons">
+                            <input
+                            type="email"
+                            class="form-control"
+                            id="email"
+                            name="email"
+                            placeholder="Enter your email address"
+                            required
+                          />
+                            <img src="assets/img/icons/mail.svg" alt="img">
+                        </div>
+                    </div>
+
+                    <div class="form-login">
+                        <label for="exampleFormControlInput1" >Password</label>
+                        <div class="pass-group">
+                          <input
+                          type="password"
+                          class="form-control pass-input"
+                          id="password"
+                          name="password"
+                          placeholder="Enter your password"
+                          required
+                        />
+                        <span class="fas toggle-password fa-eye-slash"></span>
+                        </div>
+                    </div>
+                    <div class="form-login">
+                        <button type="submit" class="btn btn-login">Sign In</button>
+                    </div>
+                </div>
+            </div>
+            <div class="login-img">
+              <img src="assets/img/img1.png" alt="img">
+            </div>
+        </div>
+      </form>
+      </div>
+    </div>
+</div>
+
+
+<script src="assets/js/jquery-3.6.0.min.js"></script>
+
+<script src="assets/js/feather.min.js"></script>
+
+<script src="assets/js/bootstrap.bundle.min.js"></script>
+
+<script src="assets/js/script.js"></script>
+</body>
+</html>

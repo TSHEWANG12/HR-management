@@ -1,0 +1,116 @@
+<%- include("../partials/Admin/view-department-user-header.ejs"); -%>
+<%- include("../partials/Admin/horizantail-header"); -%>
+<%- include("../partials/Admin/vertical-header"); -%>
+<%- include("../partials/Alert/warning"); -%>
+<%- include("../partials/Alert/ok-alert"); -%>
+
+<% if (typeof successMessage !== "undefined" && successMessage.length > 0) { %>
+  <script>
+    swal({
+      title: "Good job!",
+      text: "<%= successMessage[0] %>",
+      icon: "success",
+    });
+  </script>
+<% } %>
+
+<% if (typeof errorMessage !=="undefined" && errorMessage.length > 0 ) { %>
+  <script>
+    Swal.fire({
+      icon: 'error',
+      title: 'Oops...',
+      text: "<%= errorMessage %>",
+    })
+    </script>
+<% } %>
+
+<div class="page-wrapper">
+    <div class="content">
+      <div class="page-header">
+        <div class="page-title">
+            <h4>Register Employee List</h4>
+            <h6>Manage your Employees</h6>
+        </div>
+        <div class="page-btn">
+          <a href="/adddeptuser" class="btn btn-added"><img src="../../../assets/img/icons/plus.svg" alt="img" class="me-1">Add Employee</a>
+        </div>
+
+      </div>
+     </div>
+      <div class="card">
+        <div class="card-body">
+          <div class="table-top">
+              <div class="search-set">
+                  <div class="search-input">
+                    <a class="btn btn-searchset"><img src="../../../assets/img/icons/search-white.svg" alt="img"></a>
+                  </div>
+              </div>
+          </div>
+        </div>
+        <div class="table-responsive">
+          <table class="table datanew">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Employee ID</th>
+                <th>Gender</th>
+                <th>DOB</th>
+                <th>Designation</th>
+                <th>Department</th>
+                <th>Appointment Date</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% users.forEach((user,index) => { %>
+              <tr>
+                <td><%= user.name %></td>
+                <td><%= user.employee_id %></td>
+                <td><%= user.gender %></td>
+                <td><%= user.dob %></td>
+                <td><%= user.designation %></td>
+                <td><%= user.department %></td>
+                <td><%= user.appointment_date %></td>
+                <td>
+                  <a class="me-3" href="/update-dept-user/<%= user._id %>">
+                    <button
+                      class="pencil"
+                      data-bs-toggle="modal"
+                      data-bs-target="#UpdateItem">
+                      <img src="../../../assets/img/icons/edit.svg" alt="img">
+                    </button>
+                  </a>
+                  <button class="me-3" type="button" onclick="showDeleteWarning('<%= user._id %>')">
+                    <img src="../../../assets/img/icons/delete.svg" alt="Delete Icon">
+                  </button>
+                </td>
+              </tr>
+              <% }) %>
+            </tbody>
+          </table>
+        </div>
+        <form action="/filter-by-gender" method="post">
+          <div class="card-body">
+              <div class="row">
+                  <div class="col-lg-3 col-sm-6 col-12">
+                      <div class="form-group">
+                          <label>Gender</label>
+                          <!-- <input type="text" id="gender" name="gender" readonly> -->
+                          <select id="gender" name="gender" class="select">
+                              <option value="male">Male</option>
+                              <option value="female">Female</option>
+                          </select>
+                      </div>
+                  </div>
+              </div>
+              <div class="col-lg-12">
+                <button type="submit" class="btn btn-submit me-2">Filter</button>
+              </div>
+          </div><!--Card-Body-->
+      </form>
+      </div>
+    </div><!---Card End-->
+  </div>
+</div>
+
+<%- include("../partials/Admin/view-department-user-footer.ejs"); -%>

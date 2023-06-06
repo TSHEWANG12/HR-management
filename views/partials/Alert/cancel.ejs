@@ -1,0 +1,88 @@
+<!-- CSS styles for the cancel warning pop-up -->
+<style>
+    .cancel-warning {
+      background-color: #fff;
+      border: 1px solid #ccc;
+      display: none;
+      padding: 20px;
+      max-width: 400px;
+      text-align: center;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 9999;
+    }
+  
+    .cancel-warning h3 {
+      font-size: 20px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+  
+    .cancel-warning p {
+      margin-bottom: 20px;
+    }
+  
+    .cancel-warning .buttons {
+      display: flex;
+      justify-content: center;
+    }
+  
+    .cancel-warning .cancel-button {
+      background-color:#B26A28;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 4px;
+      margin-right: 10px;
+    }
+  
+    .cancel-warning .delete-button {
+      background-color: #ea5455;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+  </style>
+  
+  <!-- Cancel warning pop-up -->
+  <div id="cancelWarning" class="cancel-warning">
+    <h3>Warning</h3>
+    <p>Are you sure you want to cancel this item?</p>
+    <div class="buttons">
+      <button id="cancelButton" class="cancel-button" onclick="hideCancelWarning()">
+        No
+      </button>
+      <button id="deleteButton" class="delete-button" onclick="performCancel()">
+        Yes
+      </button>
+    </div>
+  </div>
+  
+  <!-- Form -->
+
+  
+  <!-- JavaScript -->
+  <script>
+    function showCancelWarning() {
+      const cancelWarning = document.getElementById("cancelWarning");
+      cancelWarning.style.display = "block";
+    }
+  
+    function hideCancelWarning() {
+      const cancelWarning = document.getElementById("cancelWarning");
+      cancelWarning.style.display = "none";
+    }
+  
+    function performCancel() {
+      const cancelForm = document.getElementById("cancelForm");
+      cancelForm.submit();
+    }
+  </script>
+  

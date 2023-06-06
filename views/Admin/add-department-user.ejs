@@ -1,0 +1,119 @@
+<%- include("../partials/Admin/add-department-user-header"); -%>
+<%- include("../partials/Admin/horizantail-header"); -%>
+<%- include("../partials/Admin/vertical-header"); -%>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
+<% if (typeof successMessage !== "undefined" && successMessage.length > 0) { %>
+    <script>
+      swal({
+        title: "Good job!",
+        text: "<%= successMessage[0] %>",
+        icon: "success",
+      });
+    </script>
+  <% } %>
+
+  <% if (typeof errorMessage !=="undefined" && errorMessage.length > 0 ) { %>
+    <script>
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: "<%= errorMessage %>",
+      })
+      </script>
+  <% } %>
+
+
+<!--Start Cards-->
+<div class="page-wrapper">
+    <div class="content">
+        <div class="page-header">
+            <div class="page-title">
+                <h4>Employees Management</h4>
+                <h6>Add new Employee User</h6>
+            </div>
+        </div>
+        <div class="card">
+            <form action="/adddeptuser" method="post">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-lg-3 col-sm-6 col-12">
+                            <div class="form-group">
+                                <label>Name</label>
+                                <input type="text" id="name" name="name">
+                            </div>
+                        </div>
+    
+                        <div class="col-lg-3 col-sm-6 col-12">
+                            <div class="form-group">
+                                <label>Employee ID</label>
+                                <input type="text" id="employee_id" name="employee_id">
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3 col-sm-6 col-12">
+                            <div class="form-group">
+                                <label>Gender</label>
+                                <!-- <input type="text" id="gender" name="gender" readonly> -->
+                                <select id="gender" name="gender" class="select">
+                                    <option value="male">Male</option>
+                                    <option value="female">Female</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3 col-sm-6 col-12">
+                            <div class="form-group">
+                                <label>DOB</label>
+                                <input type="text" id="dob" name="dob" placeholder="dd/mm/yyyy" required>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3 col-sm-6 col-12">
+                            <div class="form-group">
+                                <label>Designation</label>
+                                <input type="text" id="designation" name="designation">
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3 col-sm-6 col-12">
+                            <div class="form-group">
+                                <label>Department</label>
+                                <input type="text" id="department" name="department">
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3 col-sm-6 col-12">
+                            <div class="form-group">
+                                <label>Appointment Date</label>
+                                <input type="text" id="app_date" name="appointment_date" placeholder="dd/mm/yyyy" required>
+                            </div>
+                        </div>
+    
+                    </div>
+                    <div class="col-lg-12">
+                        <button type="submit" class="btn btn-submit me-2">Submit</button>
+                        <a href="/view-dept-user" class="btn btn-cancel">Cancel</a>
+                    </div>
+                </div><!--Card-Body-->
+            </form>
+        </div><!--Card-->
+    </div><!--Content-->
+</div><!--page-wrapper-->
+
+<script>
+    const dobInput = document.getElementById("dob");
+
+    flatpickr(dobInput, {
+      dateFormat: "d/m/Y",
+    });
+    const appInput = document.getElementById("app_date");
+
+    flatpickr(appInput, {
+      dateFormat: "d/m/Y",
+    });
+</script>
+
+<%- include("../partials/Admin/add-department-user-footer"); -%>

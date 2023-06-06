@@ -1,0 +1,339 @@
+<style>
+  /* CSS styles for the delete warning pop-up */
+  .delete-warning {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    display: none;
+    padding: 20px;
+    max-width: 400px;
+    text-align: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+  }
+
+  .delete-warning h3 {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+
+  .delete-warning p {
+    margin-bottom: 20px;
+  }
+
+  .delete-warning .buttons {
+    display: flex;
+    justify-content: center;
+  }
+
+  .delete-warning .cancel-button {
+    background-color: #B26A28;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 4px;
+    margin-right: 10px;
+  }
+
+  .delete-warning .delete-button {
+    background-color: #ea5455;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 4px;
+  }
+</style>
+
+<!-- Delete warning pop-up -->
+<div id="deleteWarning" class="delete-warning">
+  <h3>Warning</h3>
+  <p>Are you sure you want to delete this item?</p>
+  <textarea name="remarks" id="remarks" cols="30" rows="10"></textarea>
+  <div class="buttons">
+    <button
+      id="cancelButton"
+      class="cancel-button"
+      onclick="hideDeleteWarning()"
+    >
+      Cancel
+    </button>
+    <button id="deleteButton" class="delete-button" onclick="performDelete()">
+      Delete
+    </button>
+  </div>
+</div>
+
+<form id="deleteForm" method="post">
+  <!-- Your form contents here -->
+</form>
+
+<script>
+  // JavaScript code
+  let deleteId; // Variable to store the ID of the item to be deleted
+
+  function showDeleteWarning(id) {
+    deleteId = id; // Store the ID in the variable
+    const deleteWarning = document.getElementById("deleteWarning");
+    deleteWarning.style.display = "block";
+  }
+
+  function hideDeleteWarning() {
+    const deleteWarning = document.getElementById("deleteWarning");
+    deleteWarning.style.display = "none";
+  }
+
+  function getBaseURL() {
+    const currentURL = window.location.href;
+    return currentURL;
+  }
+
+  function performDelete() {
+    if (deleteId) {
+      const remarks = document.getElementById("remarks").value; // Get the textarea value
+      const deleteForm = document.getElementById("deleteForm");
+      const baseURL = getBaseURL();
+      deleteForm.action = baseURL + "/" + deleteId; // Set the correct action URL
+
+      // Remove any existing hidden input fields
+      const existingRemarksInput = deleteForm.querySelector(
+        'input[name="remarks"]'
+      );
+      if (existingRemarksInput) {
+        existingRemarksInput.remove();
+      }
+
+      // Append the textarea value as a hidden input field to the form
+      const remarksInput = document.createElement("input");
+      remarksInput.type = "hidden";
+      remarksInput.name = "remarks";
+      remarksInput.value = remarks;
+      deleteForm.appendChild(remarksInput);
+      deleteForm.submit();
+    }
+  }
+</script>
+
+<style>
+  /* CSS styles for the forward warning pop-up */
+  .forward-warning {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    display: none;
+    padding: 20px;
+    max-width: 400px;
+    text-align: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+  }
+
+  .forward-warning h3 {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+
+  .forward-warning p {
+    margin-bottom: 20px;
+  }
+
+  .forward-warning .buttons {
+    display: flex;
+    justify-content: center;
+  }
+
+  .forward-warning .cancel-button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 4px;
+    margin-right: 10px;
+  }
+
+  .forward-warning .forward-button {
+    background-color: #dc3545;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 4px;
+  }
+</style>
+
+<!-- accept warning pop-up -->
+<div id="forwardWarning" class="forward-warning">
+  <h3>Accept</h3>
+  <p>Are you sure you want to forward these request?</p>
+  <div class="buttons">
+    <button
+      id="cancelButton"
+      class="cancel-button"
+      onclick="hideforwardWarning()"
+    >
+      Cancel
+    </button>
+    <button id="deleteButton" class="forward-button" onclick="performForward()">
+      Accept
+    </button>
+  </div>
+</div>
+
+<form id="forwardedForm" method="post">
+  <!-- Your form contents here -->
+</form>
+
+<script>
+  // JavaScript code
+  let forwardId;
+  let forwardUrl; // Variable to store the ID of the item to be deleted
+
+  function isForwardedWarning(id) {
+    forwardId = id.split("/")[1];
+    forwardUrl = id.split("/")[0];
+    // Store the ID in the variable
+    const forwardWarning = document.getElementById("forwardWarning");
+    forwardWarning.style.display = "block";
+  }
+
+  function hideforwardWarning() {
+    const forwardWarning = document.getElementById("forwardWarning");
+    forwardWarning.style.display = "none";
+  }
+
+  function getBaseURL() {
+    const currentURL = window.location.href;
+    return currentURL;
+  }
+
+  function performForward() {
+    if (forwardId) {
+      const forwardedForm = document.getElementById("forwardedForm");
+      const baseURL = getBaseURL();
+      forwardedForm.action = baseURL + "/" + forwardUrl + "/" + forwardId; // Set the correct action URL
+      forwardedForm.submit();
+    }
+  }
+</script>
+
+<style>
+  /* CSS styles for the forward warning pop-up */
+  .accept-warning {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    display: none;
+    padding: 20px;
+    max-width: 400px;
+    text-align: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+  }
+
+  .accept-warning h3 {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+
+  .accept-warning p {
+    margin-bottom: 20px;
+  }
+
+  .accept-warning .buttons {
+    display: flex;
+    justify-content: center;
+  }
+
+  .accept-warning .cancel-button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 4px;
+    margin-right: 10px;
+  }
+
+  .accept-warning .accept-button {
+    background-color: #dc3545;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 4px;
+  }
+</style>
+
+<!-- Foward warning pop-up -->
+<div id="acceptWarning" class="accept-warning">
+  <h3>Accept</h3>
+  <p>Are you sure you want to accept these request?</p>
+  <div class="buttons">
+    <button
+      id="cancelButton"
+      class="cancel-button"
+      onclick="hideacceptWarning()"
+    >
+      Cancel
+    </button>
+    <button id="deleteButton" class="accept-button" onclick="performAccept()">
+      Accept
+    </button>
+  </div>
+</div>
+
+<form id="acceptedForm" method="post">
+  <!-- Your form contents here -->
+</form>
+
+<script>
+  // JavaScript code
+  let acceptId;
+  let acceptUrl; // Variable to store the ID of the item to be deleted
+
+  function isAcceptedWarning(id) {
+    acceptId = id.split("/")[1];
+    acceptUrl = id.split("/")[0];
+    // Store the ID in the variable
+    const acceptWarning = document.getElementById("acceptWarning");
+    acceptWarning.style.display = "block";
+  }
+
+  function hideacceptWarning() {
+    const acceptWarning = document.getElementById("acceptWarning");
+    acceptWarning.style.display = "none";
+  }
+
+  function getBaseURL() {
+    const currentURL = window.location.href;
+    return currentURL;
+  }
+
+  function performAccept() {
+    if (acceptId) {
+      const acceptedForm = document.getElementById("acceptedForm");
+      const baseURL = getBaseURL();
+      acceptedForm.action = baseURL + "/" + acceptUrl + "/" + acceptId; // Set the correct action URL
+      acceptedForm.submit();
+    }
+  }
+</script>
+
+

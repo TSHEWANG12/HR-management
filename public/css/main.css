@@ -1,0 +1,53 @@
+body {
+    background-color: whitesmoke;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo {
+    width:80px;
+    height:80px;
+}
+
+.mainbox {
+    border: 1px #b26a28 solid;
+    border-radius: 5px;
+}
+
+.form-control {
+    border-color: #b26a28;
+    background-color: whitesmoke;
+}
+
+.form-control:focus {
+    border-color: #b26a28;
+    box-shadow: none;
+}
+
+label {
+    color: #b26a28 !important;
+}
+
+.submitbtn {
+    background: #b26a28;
+    color: whitesmoke;
+    transition: background ease-in-out 300ms;
+}
+
+.submitbtn:hover {
+    background: #cf7c2f;
+    color: whitesmoke;
+}
+
+.frgt {
+    text-decoration: none;
+    color: #b26a28;
+    transition: color ease-in-out 300ms;
+}
+
+.frgt:hover {
+    text-decoration: none;
+    color: #e88b34;
+}

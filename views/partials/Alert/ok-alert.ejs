@@ -1,0 +1,54 @@
+<style>
+  /* Custom alert styles */
+  .custom-alert {
+    position: fixed;
+    display: none;
+    top: 50%;
+    left: 60%;
+    transform: translate(-50%, -50%);
+    width: 500px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    text-align: center;
+    z-index: 9999;
+  }
+
+  .custom-alert .message {
+    font-size: 18px;
+    margin-bottom: 20px;
+  }
+
+  .custom-alert .ok-button {
+    background-color:#B26A28;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 4px;
+  }
+</style>
+
+<!-- Custom alert markup -->
+<% if (typeof message !== "undefined" && message) { %>
+  <div id="custom-alert" class="custom-alert">
+    <div class="message"><%= message %></div>
+    <button class="ok-button">OK</button>
+  </div>
+<% } %>
+
+
+<script>
+  // Display the custom alert
+  const customAlert = document.getElementById("custom-alert");
+  const okButton = customAlert.querySelector(".ok-button");
+
+  customAlert.style.display = "block";
+
+  // Reload the page after the user clicks "OK"
+  okButton.addEventListener("click", () => {
+    customAlert.style.display = "none";
+  });
+</script>
