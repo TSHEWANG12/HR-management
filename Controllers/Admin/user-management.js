@@ -61,7 +61,7 @@ exports.postAddDeptUser = async (req, res) => {
   }
 };
 
-//---------------Managing  department users -----------------------------//
+//---------------Managing  employee department users -----------------------------//
 
 exports.getDeptUser = async (req, res) => {
   const successMessage = req.flash('success');
